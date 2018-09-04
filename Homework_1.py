@@ -6,6 +6,9 @@ df = pd.read_csv('Marriage_Divorce_Rates_Data.csv') #import uncleaned csv file
 
 cols1 = list(df.columns)
 cols1 = [str(x)[:5] for x in cols1]
+#connect to (or create if doesn’t exists) the SQLite database named db_name.db 
+conn = sqlite3.connect("database.db") 
+#[connection_name] = sqlite3.connect("[db_name].db") 
 
 df2 = pd.melt(df, id_vars = ['State'], #Set Primary Column
 value_vars = ['2011 Divorce Rates', '2011 Marriage Rates', #Enter Values of Variables
@@ -28,3 +31,5 @@ df2.groupby('State').groups
 
 df2.to_csv('Python_Cleaned_File.csv') #Exports clean file to the file the python program is in
 print('File has been cleaned and saved to your Folder')
+#close connection 
+conn.close()
