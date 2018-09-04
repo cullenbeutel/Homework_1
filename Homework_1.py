@@ -34,5 +34,6 @@ df2.groupby('State').groups
 df2.to_sql("database.db", engine) #converts datafram to SQL database
 df2.to_csv('Python_Cleaned_File.csv') #Exports clean file to the file the python program is in
 print('File has been cleaned and saved to your Folder')
-# print(pd.read_sql_table("database.db", engine)) #Test to see database is filled
+print(pd.read_sql_table("database.db", engine)) #Test to see database is filled
+
 conn.close()    #close connection 
