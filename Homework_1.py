@@ -11,7 +11,7 @@ cols1 = [str(x)[:5] for x in cols1]
 #connect to (or create if doesn’t exists) the SQLite database named db_name.db 
 conn = sqlite3.connect("database.db") 
 #[connection_name] = sqlite3.connect("[db_name].db") 
-engine = create_engine('sqlite:///:memory:') #Create engine
+engine = create_engine('sqlite:///database.db') #Create engine
 
 df2 = pd.melt(df, id_vars = ['State'], #Set Primary Column
 value_vars = ['2011 Divorce Rates', '2011 Marriage Rates', #Enter Values of Variables
@@ -24,7 +24,7 @@ value_vars = ['2011 Divorce Rates', '2011 Marriage Rates', #Enter Values of Vari
 '1999 Divorce Rates', '1999 Marriage Rates', '1995 Divorce Rates', '1995 Marriage Rates',
 '1990 Divorce Rates', '1990 Marriage Rates'],
 var_name = 'Year', #Set Variable Name
-value_name = 'Rate') #Set Name fort measure of variable
+value_name = 'Rate') #Set Name for measure of variable
 
 df2.sort_values(by= ['State', 'Year'], inplace = True, ascending=True)  #Sort values based on State and Year
 
